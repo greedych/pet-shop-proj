@@ -1,7 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-
-const BASE_URL = "http://localhost:3333/";
+import { BASE_URL } from "../../urls/urls";
 
 export const fetchCategories = createAsyncThunk(
   "category/fetchCategories",
