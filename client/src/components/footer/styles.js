@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { Grid, Typography } from "@mui/material";
 
-export const GridBox = styled(Grid)()(({ theme }) => ({
+export const GridBox = styled(Grid)(({ theme }) => ({
   backgroundColor: "#F1F3F4",
   padding: theme.spacing(4),
   gap: theme.spacing(2),
