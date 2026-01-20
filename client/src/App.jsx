@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Header from "./components/header";
+import Footer from "./components/footer";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/discount" element={<p>discount</p>} />
         <Route path="/cart" element={<p>cart</p>} />
       </Routes>
+      <Footer />
     </>
   );
 }
