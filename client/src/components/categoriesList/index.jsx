@@ -1,15 +1,10 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCategories } from "../../redux/slices/categorySlice";
-import { Divider, Stack } from "@mui/material";
 import CategoryCard from "./categoryCard";
 import { useLocation, useNavigate } from "react-router-dom";
-import {
-  AllCatrgoriesButton,
-  CategoriesListTitle,
-  CategoriesStack,
-  CatigoriesBlock,
-} from "./styles";
+import { CategoriesStack, CategoriesTitle, CatigoriesBlock } from "./styles";
+import TitledDivider from "../titledDivider";
 
 function CategoriesList() {
   const { categories, isLoading, isError, message } = useSelector(
@@ -33,24 +28,17 @@ function CategoriesList() {
   return (
     <CatigoriesBlock>
       {location.pathname !== "/" && (
-        <CategoriesListTitle variant="h1">Categories</CategoriesListTitle>
+        <CategoriesTitle variant="h1">Categories</CategoriesTitle>
       )}
       {location.pathname === "/" && (
-        <Stack
-          flexDirection="row"
-          alignItems="center"
-          paddingBottom={5}
-          width="100%"
-        >
-          <CategoriesListTitle variant="h1">Categories</CategoriesListTitle>
-          <Divider flexItem sx={{ flexGrow: 1, alignSelf: "center" }} />
-          <AllCatrgoriesButton onClick={checkAllCategories} variant="outlined">
-            All categories
-          </AllCatrgoriesButton>
-        </Stack>
+        <TitledDivider
+          title={"Categories"}
+          onClick={checkAllCategories}
+          btnText={"All categories"}
+        />
       )}
 
-      <CategoriesStack flexDirection="row" flex="1 1 25%" width="100%">
+      <CategoriesStack>
         {newCategories.map((category) => (
           <CategoryCard key={category.id} {...category} />
         ))}

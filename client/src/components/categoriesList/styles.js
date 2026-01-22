@@ -11,26 +11,12 @@ export const CategoriesStack = styled(Stack)(({ theme }) => ({
   gap: theme.spacing(4),
   width: "100%",
   flexWrap: "wrap",
+  flexDirection: "row",
+  flex: "1 1 25%",
 }));
 
-export const CategoriesListTitle = styled(Typography)(({ theme }) => ({
+export const CategoriesTitle = styled(Typography)(({ theme }) => ({
   fontSize: "4rem",
   fontWeight: "bold",
   paddingRight: theme.spacing(4),
-}));
-
-// export const Divider = styled(Box)(({ theme }) => ({
-//   height: "1px",
-//   width: "100%",
-//   border: `1px solid ${theme.palette.divider}`,
-// }));
-
-export const AllCatrgoriesButton = styled(Button)(({ theme }) => ({
-  textTransform: "none",
-  border: `1px solid ${theme.palette.divider}`,
-  color: theme.palette.dividerText,
-  padding: theme.spacing(1, 2),
-  fontSize: "1rem",
-  lineHeight: "126%",
-  borderRadius: "6px",
 }));
