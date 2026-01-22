@@ -5,6 +5,13 @@ const theme = createTheme({
   typography: {
     fontFamily: "Montserrat, sans-serif",
   },
+  palette: {
+    primary: {
+      main: "#0D50FF",
+    },
+    divider: "#DDDDDD",
+    dividerText: "#8B8B8B",
+  },
 });
 
 export default theme;
