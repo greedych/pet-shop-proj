@@ -2,11 +2,11 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { BASE_URL } from "../../urls/urls";
 
-export const fetchCategory = createAsyncThunk(
-  "category/fetchCategory",
-  async (payload, { rejectWithValue }) => {
+export const fetchCategories = createAsyncThunk(
+  "category/fetchCategories",
+  async (_, { rejectWithValue }) => {
     try {
-      const responce = await axios.get(BASE_URL + `categories/${payload}`);
+      const responce = await axios.get(BASE_URL + "categories/all");
       return responce.data;
     } catch (e) {
       return rejectWithValue(e.message);
@@ -14,11 +14,10 @@ export const fetchCategory = createAsyncThunk(
   },
 );
 
-const categorySlice = createSlice({
+const categoriesSlice = createSlice({
   name: "categories",
   initialState: {
-    category: {},
-    categoryProducts: [],
+    categories: [],
     isLoading: false,
     isSuccess: false,
     isError: false,
@@ -27,17 +26,16 @@ const categorySlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchCategory.pending, (state) => {
+      .addCase(fetchCategories.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(fetchCategory.fulfilled, (state, action) => {
+      .addCase(fetchCategories.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isError = false;
         state.isSuccess = true;
-        state.category = action.payload.category;
-        state.categoryProducts = action.payload.data;
+        state.categories = action.payload;
       })
-      .addCase(fetchCategory.rejected, (state, action) => {
+      .addCase(fetchCategories.rejected, (state, action) => {
         state.isLoading = false;
         state.isSuccess = false;
         state.isError = true;
@@ -46,4 +44,5 @@ const categorySlice = createSlice({
   },
 });
 
-export default categorySlice.reducer;
+// export const {} = categorySlice.actions;
+export default categoriesSlice.reducer;

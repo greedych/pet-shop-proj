@@ -2,8 +2,6 @@ import styled from "@emotion/styled";
 import { Button, Typography } from "@mui/material";
 
 export const DividerTitle = styled(Typography)(({ theme }) => ({
-  fontSize: "4rem",
-  fontWeight: "bold",
   paddingRight: theme.spacing(4),
 }));
 

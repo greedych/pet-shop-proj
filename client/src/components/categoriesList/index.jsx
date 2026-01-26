@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCategories } from "../../redux/slices/categorySlice";
+import { fetchCategories } from "../../redux/slices/categoriesSlice";
 import CategoryCard from "./categoryCard";
 import { useLocation, useNavigate } from "react-router-dom";
 import { CategoriesStack, CategoriesTitle, CatigoriesBlock } from "./styles";

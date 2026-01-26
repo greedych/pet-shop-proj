@@ -10,6 +10,6 @@ export const CategoryStack = styled(Stack)(({ theme }) => ({
   minWidth: 200,
   transition: "all 0.11s ease",
   "&:hover": {
-    transform: "scale(0.9)",
+    transform: "scale(0.95)",
   },
 }));
