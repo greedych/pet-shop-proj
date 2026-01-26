@@ -10,12 +10,14 @@ import {
 } from "./styles";
 import DiscountEmblem from "../../discountEmblem";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function ProductCard({ product }) {
   const [show, setShow] = useState(false);
   const [isAddToCart, setIsAddToCart] = useState(false);
+  const navigate = useNavigate();
 
-  const handleClick = () => {
+  const AddToCart = () => {
     setIsAddToCart(true);
     const addedProducts = JSON.parse(localStorage.getItem("cart")) || [];
     console.log(addedProducts);
@@ -40,6 +42,11 @@ function ProductCard({ product }) {
       JSON.stringify([...localArr, { ...product, count: 1 }]),
     );
   };
+
+  const ProductNavigate = () => {
+    navigate("/products/" + product.id);
+  };
+
   // width={"23.23%"}
 
   return (
@@ -47,13 +54,14 @@ function ProductCard({ product }) {
       position={"relative"}
       onMouseEnter={() => setShow(true)}
       onMouseLeave={() => setShow(false)}
+      onClick={ProductNavigate}
     >
       <Stack position={"relative"}>
         {product.discont_price && <DiscountEmblem {...product} />}
         <ProductCardImage src={BASE_URL + product.image} alt={product.title} />
         {/* {show && ( */}
         <ProductButton
-          onClick={handleClick}
+          onClick={AddToCart}
           isAddToCart={isAddToCart}
           show={show}
           variant="contained"

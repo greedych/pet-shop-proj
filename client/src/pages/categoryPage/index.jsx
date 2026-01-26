@@ -5,7 +5,7 @@ import { fetchCategory } from "../../redux/slices/categorySlice";
 import { useParams } from "react-router-dom";
 import { Typography } from "@mui/material";
 
-function Category() {
+function CategoryPage() {
   const dispatch = useDispatch();
   const { categoryId } = useParams();
   const { category, categoryProducts } = useSelector((state) => state.category);
@@ -20,4 +20,4 @@ function Category() {
   );
 }
 
-export default Category;
+export default CategoryPage;

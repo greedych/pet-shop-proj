@@ -8,6 +8,10 @@ const theme = createTheme({
       fontSize: "4rem",
       fontWeight: "bold",
     },
+    h2: {
+      fontSize: "2.5rem",
+      fontWeight: "bold",
+    },
   },
   palette: {
     primary: {

@@ -9,6 +9,8 @@ function DiscountEmblem({ discont_price, price }) {
     return countDiscount;
   }, [discont_price, price]);
 
+  if (!discont_price) return;
+
   return (
     <DiscountEmblemStack>
       <Typography color="white">-{discount}%</Typography>
