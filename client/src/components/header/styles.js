@@ -14,6 +14,10 @@ export const MainLogo = styled("img")({
   width: "70px",
   height: "70px",
   cursor: "pointer",
+  transition: "all 0.11s ease",
+  "&:hover": {
+    transform: "scale(1.1)",
+  },
 });
 
 export const CartImg = styled("img")({

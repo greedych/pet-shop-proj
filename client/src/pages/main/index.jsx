@@ -6,8 +6,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import {
   fetchProducts,
-  getRandomProducts,
+  getRandomDiscounts,
 } from "../../redux/slices/productsSlice";
+import GetDiscountForm from "../../components/getDiscountForm";
 
 function Main() {
   const dispatch = useDispatch();
@@ -20,7 +21,7 @@ function Main() {
 
   useEffect(() => {
     if (isSuccess) {
-      dispatch(getRandomProducts());
+      dispatch(getRandomDiscounts());
     }
   }, [dispatch, isSuccess]);
 
@@ -28,6 +29,7 @@ function Main() {
     <Stack>
       <Banner />
       <CategoriesList />
+      <GetDiscountForm />
       <ProductsList products={randomDiscounts} />
     </Stack>
   );

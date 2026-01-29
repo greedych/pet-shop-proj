@@ -26,7 +26,7 @@ const productsSlice = createSlice({
     message: "",
   },
   reducers: {
-    getRandomProducts: (state) => {
+    getRandomDiscounts: (state) => {
       const copyProducts = [...state.randomDiscounts];
 
       if (copyProducts.length > 0) {
@@ -39,6 +39,38 @@ const productsSlice = createSlice({
         }
       }
       state.randomDiscounts = copyProducts.slice(0, 4);
+    },
+    getIsDiscounts: (state) => {
+      state.products = state.products.filter(
+        (products) => products.discont_price,
+      );
+    },
+    sortAscending: (state) => {
+      state.products.sort((a, b) => {
+        const aPrice = a.discont_price ?? a.price;
+        const bPrice = b.discont_price ?? b.price;
+        return aPrice - bPrice;
+      });
+    },
+    sortDescending: (state) => {
+      state.products.sort((a, b) => {
+        const aPrice = a.discont_price ?? a.price;
+        const bPrice = b.discont_price ?? b.price;
+        return bPrice - aPrice;
+      });
+    },
+    sortByTitle: (state) => {
+      state.products.sort((a, b) => a.title.localeCompare(b.title));
+    },
+    sortFromTo: (state, action) => {
+      const { from, to } = action.payload || {};
+      const min = +from;
+      const max = +to;
+      console.log(min, max);
+      state.products = state.products.filter((product) => {
+        const price = product.discont_price ?? product.price;
+        return price > min && price < max;
+      });
     },
   },
   extraReducers: (builder) => {
@@ -68,5 +100,12 @@ const productsSlice = createSlice({
   },
 });
 
-export const { getRandomProducts } = productsSlice.actions;
+export const {
+  getRandomDiscounts,
+  getIsDiscounts,
+  sortAscending,
+  sortDescending,
+  sortByTitle,
+  sortFromTo,
+} = productsSlice.actions;
 export default productsSlice.reducer;

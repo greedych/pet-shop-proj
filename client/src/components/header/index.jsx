@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/pet.svg";
 import cartIcon from "../../assets/cart.svg";
 import { CartImg, HeaderLink, HeaderStack, MainLogo } from "./styles";
+import CartCounter from "../cartCounter";
 
 function Header() {
   const links = [
@@ -51,6 +52,7 @@ function Header() {
         ))}
       </Stack>
       <Stack>
+        <CartCounter />
         <CartImg src={cartIcon} alt="cart" onClick={cartNavigate} />
       </Stack>
     </HeaderStack>

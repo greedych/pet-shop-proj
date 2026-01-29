@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import TitledDivider from "../titledDivider";
 import { useLocation, useNavigate } from "react-router-dom";
 import ProductCard from "./productCard";
+import FilterBar from "../fiterBar";
 
 function ProductsList({ products, pageTitle }) {
   const { isLoading, isError, message } = useSelector(
@@ -14,7 +15,7 @@ function ProductsList({ products, pageTitle }) {
   const location = useLocation();
 
   const checkAllSales = () => {
-    navigate("/discount");
+    navigate("/discounts");
   };
 
   return (
@@ -30,6 +31,7 @@ function ProductsList({ products, pageTitle }) {
           {pageTitle}
         </Typography>
       )}
+      <FilterBar />
       <Stack
         flexDirection={"row"}
         flexWrap={"wrap"}

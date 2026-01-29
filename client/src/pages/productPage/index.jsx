@@ -31,7 +31,7 @@ function ProductPage() {
         <Typography variant="h2">{product.title}</Typography>
         <Stack position={"relative"}>
           <Price {...product} fontSizeMain={"64px"} fontSizeDisable={"40px"} />
-          <DiscountEmblem {...product} />
+          <DiscountEmblem {...product} position="relative" />
         </Stack>
         <Stack>
           <Typography>Description</Typography>

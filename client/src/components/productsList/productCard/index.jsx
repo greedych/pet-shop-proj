@@ -32,15 +32,16 @@ function ProductCard({ product }) {
     console.log(localArr);
 
     if (newProduct) {
-      newProduct.count += 10;
+      newProduct.count += 1;
       console.log(newProduct);
       console.log([...localArr, newProduct]);
       localStorage.setItem("cart", JSON.stringify([...localArr, newProduct]));
+    } else {
+      localStorage.setItem(
+        "cart",
+        JSON.stringify([...localArr, { ...product, count: 1 }]),
+      );
     }
-    localStorage.setItem(
-      "cart",
-      JSON.stringify([...localArr, { ...product, count: 1 }]),
-    );
   };
 
   const ProductNavigate = () => {
@@ -54,11 +55,14 @@ function ProductCard({ product }) {
       position={"relative"}
       onMouseEnter={() => setShow(true)}
       onMouseLeave={() => setShow(false)}
-      onClick={ProductNavigate}
     >
       <Stack position={"relative"}>
         {product.discont_price && <DiscountEmblem {...product} />}
-        <ProductCardImage src={BASE_URL + product.image} alt={product.title} />
+        <ProductCardImage
+          src={BASE_URL + product.image}
+          alt={product.title}
+          onClick={ProductNavigate}
+        />
         {/* {show && ( */}
         <ProductButton
           onClick={AddToCart}
@@ -71,7 +75,9 @@ function ProductCard({ product }) {
         {/* )} */}
       </Stack>
       <TitleCardStack>
-        <ProductCardTitle>{product.title}</ProductCardTitle>
+        <ProductCardTitle onClick={ProductNavigate}>
+          {product.title}
+        </ProductCardTitle>
         <Price
           {...product}
           fontSizeDisable={"1.25rem"}
