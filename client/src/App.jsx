@@ -9,6 +9,7 @@ import DiscountsPage from "./pages/discountsPage";
 import CategoryPage from "./pages/categoryPage";
 import ProductPage from "./pages/productPage";
 import Cart from "./pages/cart";
+import NotFound from "./pages/notFound";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/category/:categoryId" element={<CategoryPage />} />
         <Route path="/products/:productId" element={<ProductPage />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
     </>

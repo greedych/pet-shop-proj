@@ -28,7 +28,9 @@ function CategoriesList() {
   return (
     <CatigoriesBlock>
       {location.pathname !== "/" && (
-        <CategoriesTitle variant="h1">Categories</CategoriesTitle>
+        <CategoriesTitle variant="h1" paddingBottom={5}>
+          Categories
+        </CategoriesTitle>
       )}
       {location.pathname === "/" && (
         <TitledDivider
