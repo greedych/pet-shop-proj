@@ -8,6 +8,7 @@ import ProductsPage from "./pages/productsPage";
 import DiscountsPage from "./pages/discountsPage";
 import CategoryPage from "./pages/categoryPage";
 import ProductPage from "./pages/productPage";
+import Cart from "./pages/cart";
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
         <Route path="/discounts" element={<DiscountsPage />} />
         <Route path="/category/:categoryId" element={<CategoryPage />} />
         <Route path="/products/:productId" element={<ProductPage />} />
-        <Route path="/cart" element={<p>cart</p>} />
+        <Route path="/cart" element={<Cart />} />
       </Routes>
       <Footer />
     </>

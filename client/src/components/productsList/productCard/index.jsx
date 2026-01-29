@@ -11,37 +11,35 @@ import {
 import DiscountEmblem from "../../discountEmblem";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { recalculateCart } from "../../../redux/slices/cartSlice";
 
 function ProductCard({ product }) {
   const [show, setShow] = useState(false);
   const [isAddToCart, setIsAddToCart] = useState(false);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const AddToCart = () => {
+  const AddToCart = (_, quantity = 1) => {
     setIsAddToCart(true);
-    const addedProducts = JSON.parse(localStorage.getItem("cart")) || [];
-    console.log(addedProducts);
-    const newProduct = addedProducts.find(
-      (addedProduct) => addedProduct.id === product.id,
+    const cartProducts = JSON.parse(localStorage.getItem("cart")) || [];
+    const existingProduct = cartProducts.find(
+      (cartProduct) => cartProduct.id === product.id,
     );
 
-    const localArr = addedProducts.filter(
-      (addedProduct) => addedProduct.id !== product.id,
-    );
-    console.log(newProduct);
-    console.log(localArr);
+    let updatedCart;
 
-    if (newProduct) {
-      newProduct.count += 1;
-      console.log(newProduct);
-      console.log([...localArr, newProduct]);
-      localStorage.setItem("cart", JSON.stringify([...localArr, newProduct]));
-    } else {
-      localStorage.setItem(
-        "cart",
-        JSON.stringify([...localArr, { ...product, count: 1 }]),
+    if (existingProduct) {
+      updatedCart = cartProducts.map((cartProduct) =>
+        cartProduct.id === product.id
+          ? { ...cartProduct, count: cartProduct.count + quantity }
+          : cartProduct,
       );
+    } else {
+      updatedCart = [...cartProducts, { ...product, count: quantity }];
     }
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+    dispatch(recalculateCart());
   };
 
   const ProductNavigate = () => {

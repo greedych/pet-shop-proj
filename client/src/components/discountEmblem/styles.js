@@ -4,6 +4,8 @@ import { Stack } from "@mui/material";
 export const DiscountEmblemStack = styled(Stack)(({ theme }) => ({
   backgroundColor: theme.palette.primary.main,
   position: "absolute",
+  // alignItems: "flex-start",
+  // justifyContent: "flex-start",
   top: theme.spacing(2),
   right: theme.spacing(2),
   padding: theme.spacing(0.5, 1),

@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { Stack } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 
 export const HeaderStack = styled(Stack)({
@@ -33,4 +33,20 @@ export const HeaderLink = styled(Link)({
   fontWeight: "medium",
   lineHeight: "130%",
   fontSize: "1.25rem",
+});
+
+export const CounterBox = styled(Box)(({ theme }) => ({
+  backgroundColor: theme.palette.primary.main,
+  position: "absolute",
+  padding: ` 7px ${theme.spacing(1)}`,
+  borderRadius: "50%",
+  top: "6px",
+}));
+
+export const CartCounter = styled(Typography)({
+  fontSize: "12px",
+  lineHeight: "85%",
+  minWidth: "8px",
+  color: "#fff",
+  textAlign: "center",
 });

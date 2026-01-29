@@ -16,7 +16,7 @@ export const DiscountFormTitle = styled(Typography)(({ theme }) => ({
   paddingBottom: theme.spacing(3),
 }));
 
-export const DiscountForm = styled("from")(({ theme }) => ({
+export const DiscountForm = styled("form")(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   gap: theme.spacing(2),

@@ -3,7 +3,6 @@ import { createSelector } from "@reduxjs/toolkit";
 export const FiltredProducts = (products) =>
   createSelector([products, (state) => state.filters], (products, filters) => {
     let result = [...products];
-    console.log(filters);
     if (filters.onlyDiscount) {
       result = result.filter((product) => product.discont_price);
     }

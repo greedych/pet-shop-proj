@@ -9,8 +9,11 @@ import {
   DogsImage,
 } from "./styles";
 import dogs from "../../assets/dogs.png";
+import { useDispatch } from "react-redux";
+import { postSale } from "../../redux/slices/postSlice";
 
 function GetDiscountForm() {
+  const dispatch = useDispatch();
   const {
     register,
     handleSubmit,
@@ -18,9 +21,14 @@ function GetDiscountForm() {
     reset,
   } = useForm();
 
-  const onSubmit = () => {
-    console.log("submited");
-    reset();
+  const onSubmit = async (data) => {
+    try {
+      await dispatch(postSale(data)).unwrap();
+      console.log("submitted", data);
+      reset();
+    } catch (error) {
+      console.error("Send error", error);
+    }
   };
 
   return (
@@ -67,7 +75,6 @@ function GetDiscountForm() {
               {errors.email.message}
             </Typography>
           )}
-
           <DiscountSubmit variant="contained" type="submit">
             Get a discount
           </DiscountSubmit>
