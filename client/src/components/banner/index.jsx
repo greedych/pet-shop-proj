@@ -6,7 +6,7 @@ function Banner() {
   const navigate = useNavigate();
 
   const checkDiscount = () => {
-    navigate("/discount");
+    navigate("/discounts");
   };
 
   return (
